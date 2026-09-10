@@ -12,6 +12,7 @@ def main():
     insertion_point = 10
     n = int(input("Hello user, please input a number to call this function."))
     skip_fib(numbers_list, n)
+    print(f"The term at position {n} is: {numbers_list[n]}")
 
 """
 The 4-Step Process for Finding a Base Case
@@ -22,7 +23,7 @@ Determine the Immediate Return Value: Ask, "What answer requires zero computatio
 """
 def skip_fib(numbers, n):
     if numbers is None or len(numbers) == 0:
-        numbers = {1, 2, 4, 5, 7, 11, 16, 23, 34, 50, 73, 100}
+        numbers = [1, 2, 4, 5, 7, 11, 16, 23, 34, 50, 73, 100]
 
     if n == 1:
         return 1
@@ -32,15 +33,11 @@ def skip_fib(numbers, n):
         return 4
     
     else:
-        return skip_fib(n - 1,)
+        return skip_fib(numbers, n - 1,)
 
-    numbers[n] = skip_fib(n - 1, numbers) + skip_fib(n - 2, numbers)
+    numbers[n] = skip_fib(n - 1, numbers) + skip_fib(n - 3, numbers)
     return numbers[n]
 
-def main():
-    n = int(input("Hello user, please input a position (n) to calculate: "))
-    result = skip_fib(n)
-    print(f"The result for position {n} is: {result}")
 
 if __name__ == "__main__":
     main()
